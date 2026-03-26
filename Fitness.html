@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerFit Fitnessstudio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background: #e63946;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .hero {
+            background: url('https://images.unsplash.com/photo-1554284126-aa88f22d8b74') center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background: #e63946;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        .leistungen {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* FAQ */
+        .faq-item {
+            margin-bottom: 15px;
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>PowerFit Fitnessstudio</h1>
+    <p>Dein Weg zu einem stärkeren Ich 💪</p>
+</header>
+
+<nav>
+    <a href="#home">Start</a>
+    <a href="#leistungen">Leistungen</a>
+    <a href="#faq">Q&A</a>
+    <a href="#kontakt">Kontakt</a>
+</nav>
+
+<section class="hero" id="home">
+    <h1>Starte noch heute!</h1>
+    <p>Moderne Geräte • Professionelle Trainer • Flexible Mitgliedschaften</p>
+    <button class="button">Jetzt anmelden</button>
+</section>
+
+<section id="leistungen">
+    <h2>Unsere Leistungen</h2>
+    <div class="leistungen">
+        <div class="card">
+            <h3>Krafttraining</h3>
+            <p>Modernste Geräte für effektives Muskeltraining.</p>
+        </div>
+        <div class="card">
+            <h3>Cardio</h3>
+            <p>Laufbänder, Crosstrainer & Fahrräder für dein Ausdauertraining.</p>
+        </div>
+        <div class="card">
+            <h3>Personal Training</h3>
+            <p>Individuelle Betreuung durch zertifizierte Trainer.</p>
+        </div>
+    </div>
+</section>
+
+<section id="faq">
+    <h2>Häufig gestellte Fragen (Q&A)</h2>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <strong>Wie sind die Öffnungszeiten?</strong>
+        <div class="faq-answer">
+            Wir haben täglich von 6:00 bis 23:00 Uhr geöffnet.
+        </div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <strong>Gibt es eine Mindestvertragslaufzeit?</strong>
+        <div class="faq-answer">
+            Nein, wir bieten flexible Monatsverträge ohne lange Bindung an.
+        </div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFAQ(this)">
+        <strong>Kann ich ein Probetraining machen?</strong>
+        <div class="faq-answer">
+            Ja! Ein kostenloses Probetraining ist jederzeit möglich.
+        </div>
+    </div>
+
+</section>
+
+<section id="kontakt">
+    <h2>Kontakt</h2>
+    <p>Email: info@powerfit.de</p>
+    <p>Telefon: 0123 456789</p>
+</section>
+
+<footer>
+    <p>© 2026 PowerFit Fitnessstudio – Alle Rechte vorbehalten</p>
+</footer>
+
+<script>
+    function toggleFAQ(element) {
+        const answer = element.querySelector(".faq-answer");
+        answer.style.display = answer.style.display === "block" ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>
