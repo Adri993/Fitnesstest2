@@ -10,133 +10,120 @@
     <style>
 
 :root {																						/* von n8n */
-	/* Colors */
-	--chat--color--primary: #e74266;
-	--chat--color--primary-shade-50: #db4061;
-	--chat--color--primary--shade-100: #cf3c5c;
-	--chat--color--secondary: #20b69e;
-	--chat--color-secondary-shade-50: #1ca08a;
-	--chat--color-white: #fff;
-	--chat--color-light: #f2f4f8;
-	--chat--color-light-shade-50: #e6e9f1;
-	--chat--color-light-shade-100: #c2c5cc;
-	--chat--color-medium: #d2d4d9;
-	--chat--color-dark: #101330;
-	--chat--color-disabled: #d2d4d9;
-	--chat--color-typing: #404040;
+	 /* === FARBEN === */
+    --chat--color--primary: #e74266;              /* Hauptfarbe (Toggle-Button, Akzente) */
+    --chat--color--primary-shade-50: #db4061;     /* Hover-Farbe des Toggle-Buttons */
+    --chat--color--primary--shade-100: #cf3c5c;   /* Aktiv-Farbe des Toggle-Buttons */
+    --chat--color--secondary: #20b69e;            /* Sekundärfarbe (User-Nachrichten, Buttons) */
+    --chat--color-secondary-shade-50: #1ca08a;    /* Hover der sekundären Elemente */
+    --chat--color-white: #fff;                    /* Weiß (Bot-Nachrichten Hintergrund) */
+    --chat--color-light: #f2f4f8;                 /* Heller Hintergrund (Chat-Body) */
+    --chat--color-light-shade-50: #e6e9f1;        /* Fenster-Rahmenfarbe */
+    --chat--color-light-shade-100: #c2c5cc;       /* Weitere helle UI-Elemente */
+    --chat--color-medium: #d2d4d9;                /* Mittlerer Grauton */
+    --chat--color-dark: #101330;                  /* Dunkel (Header-Hintergrund) */
+    --chat--color-disabled: #d2d4d9;              /* Deaktivierte Elemente */
+    --chat--color-typing: #404040;                /* Farbe des Tipp-Indikators */
 
-	/* Base Layout */
-	--chat--spacing: 0.3rem;
-	--chat--border-radius: 0.25rem;
-	--chat--transition-duration: 0.15s;
-	--chat--font-family:
-		-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
-		'Helvetica Neue', sans-serif;
+    /* === LAYOUT === */
+    --chat--spacing: 0.55rem;                        /* Basis-Abstand (beeinflusst viele Elemente) */
+    --chat--border-radius: 0.4rem;               /* Abrundung der meisten Elemente */
+    --chat--transition-duration: 0.2s;           /* Animationsgeschwindigkeit */
+    --chat--font-family: ...;                     /* Schriftart des gesamten Chats */
 
-	/* Window Dimensions */
-	--chat--window--width: 400px;
-	--chat--window--height: 600px;
-	--chat--window--bottom: var(--chat--spacing);
-	--chat--window--right: var(--chat--spacing);
-	--chat--window--z-index: 9999;
-	--chat--window--border: 1px solid var(--chat--color-light-shade-50);
-	--chat--window--border-radius: var(--chat--border-radius);
-	--chat--window--margin-bottom: var(--chat--spacing);
+    /* === CHAT-FENSTER === */
+    --chat--window--width: 400px;                 /* Breite des Chat-Fensters */
+    --chat--window--height: 600px;                /* Höhe des Chat-Fensters */
+    --chat--window--bottom: var(--chat--spacing); /* Abstand vom unteren Bildschirmrand */
+    --chat--window--right: var(--chat--spacing);  /* Abstand vom rechten Bildschirmrand */
+    --chat--window--z-index: 9999;                /* Ebene (ob Chat über anderen Elementen liegt) */
+    --chat--window--border: 1px solid ...;        /* Rahmen des Fensters */
+    --chat--window--border-radius: ...;           /* Abrundung des Fensters */
+    --chat--window--margin-bottom: ...;           /* Abstand zwischen Fenster und Toggle-Button */
 
-	/* Header Styles */
-	--chat--header-height: auto;
-	--chat--header--padding: var(--chat--spacing);
-	--chat--header--background: var(--chat--color-dark);
-	--chat--header--color: var(--chat--color-light);
-	--chat--header--border-top: none;
-	--chat--header--border-bottom: none;
-	--chat--header--border-left: none;
-	--chat--header--border-right: none;
-	--chat--heading--font-size: 2em;
-	--chat--subtitle--font-size: inherit;
-	--chat--subtitle--line-height: 1.8;
+    /* === HEADER (der dunkle obere Bereich) === */
+    --chat--header-height: auto;                  /* Höhe des Headers – hier anpassen! */
+    --chat--header--padding: var(--chat--spacing);/* Innenabstand des Headers */
+    --chat--header--background: var(--chat--color-dark); /* Hintergrundfarbe des Headers */
+    --chat--header--color: var(--chat--color-light);     /* Textfarbe im Header */
+    --chat--header--border-top: none;             /* Rahmen oben am Header */
+    --chat--header--border-bottom: none;          /* Rahmen unten am Header */
+    --chat--header--border-left: none;            /* Rahmen links am Header */
+    --chat--header--border-right: none;           /* Rahmen rechts am Header */
+    --chat--heading--font-size: 2em;              /* Schriftgröße des Titels ("Willkommen bei...") */
+    --chat--subtitle--font-size: inherit;         /* Schriftgröße des Untertitels ("24/7 erreichbar") */
+    --chat--subtitle--line-height: 1.8;           /* Zeilenhöhe des Untertitels */
 
-	/* Message Styles */
-	--chat--message--font-size: 1rem;
-	--chat--message--padding: var(--chat--spacing);
-	--chat--message--border-radius: var(--chat--border-radius);
-	--chat--message-line-height: 1.5;
-	--chat--message--margin-bottom: calc(var(--chat--spacing) * 1);
-	--chat--message--bot--background: var(--chat--color-white);
-	--chat--message--bot--color: var(--chat--color-dark);
-	--chat--message--bot--border: none;
-	--chat--message--user--background: var(--chat--color--secondary);
-	--chat--message--user--color: var(--chat--color-white);
-	--chat--message--user--border: none;
-	--chat--message--pre--background: rgba(0, 0, 0, 0.05);
-	--chat--messages-list--padding: var(--chat--spacing);
+    /* === NACHRICHTEN === */
+    --chat--message--font-size: 1rem;             /* Schriftgröße der Nachrichten */
+    --chat--message--padding: var(--chat--spacing);      /* Innenabstand der Nachrichtenblasen */
+    --chat--message--border-radius: ...;          /* Abrundung der Nachrichtenblasen */
+    --chat--message-line-height: 1.5;             /* Zeilenhöhe in Nachrichten */
+    --chat--message--margin-bottom: ...;          /* Abstand zwischen Nachrichten */
+    --chat--message--bot--background: #fff;       /* Hintergrund Bot-Nachrichten */
+    --chat--message--bot--color: #101330;         /* Textfarbe Bot-Nachrichten */
+    --chat--message--bot--border: none;           /* Rahmen Bot-Nachrichten */
+    --chat--message--user--background: #20b69e;   /* Hintergrund User-Nachrichten */
+    --chat--message--user--color: #fff;           /* Textfarbe User-Nachrichten */
+    --chat--message--user--border: none;          /* Rahmen User-Nachrichten */
+    --chat--message--pre--background: ...;        /* Hintergrund für Code-Blöcke */
+    --chat--messages-list--padding: ...;          /* Abstand der Nachrichtenliste zum Rand */
 
-	/* Toggle Button */
-	--chat--toggle--size: 64px;
-	--chat--toggle--width: var(--chat--toggle--size);
-	--chat--toggle--height: var(--chat--toggle--size);
-	--chat--toggle--border-radius: 50%;
-	--chat--toggle--background: var(--chat--color--primary);
-	--chat--toggle--hover--background: var(--chat--color--primary-shade-50);
-	--chat--toggle--active--background: var(--chat--color--primary--shade-100);
-	--chat--toggle--color: var(--chat--color-white);
+    /* === TOGGLE-BUTTON (der runde Button unten rechts) === */
+    --chat--toggle--size: 64px;                   /* Größe des Toggle-Buttons */
+    --chat--toggle--width: var(...);              /* Breite (überschreibt size) */
+    --chat--toggle--height: var(...);             /* Höhe (überschreibt size) */
+    --chat--toggle--border-radius: 50%;           /* 50% = rund, weniger = eckiger */
+    --chat--toggle--background: ...;              /* Farbe des Toggle-Buttons */
+    --chat--toggle--hover--background: ...;       /* Hover-Farbe */
+    --chat--toggle--active--background: ...;      /* Klick-Farbe */
+    --chat--toggle--color: #fff;                  /* Icon-Farbe im Toggle-Button */
 
-	/* Input Area */
-	--chat--textarea--height: 50px;
-	--chat--textarea--max-height: 30rem;
-	--chat--input--font-size: inherit;
-	--chat--input--border: 0;
-	--chat--input--border-radius: 0;
-	--chat--input--padding: 0.8rem;
-	--chat--input--background: var(--chat--color-white);
-	--chat--input--text-color: initial;
-	--chat--input--line-height: 1.5;
-	--chat--input--placeholder--font-size: var(--chat--input--font-size);
-	--chat--input--border-active: 0;
-	--chat--input--left--panel--width: 2rem;
+    /* === EINGABEFELD === */
+    --chat--textarea--height: 50px;               /* Höhe des Eingabefeldes */
+    --chat--textarea--max-height: 30rem;          /* Max. Höhe (wächst beim Tippen) */
+    --chat--input--font-size: inherit;            /* Schriftgröße im Eingabefeld */
+    --chat--input--border: 0;                     /* Rahmen des Eingabefeldes */
+    --chat--input--border-radius: 0;              /* Abrundung des Eingabefeldes */
+    --chat--input--padding: 0.8rem;               /* Innenabstand des Eingabefeldes */
+    --chat--input--background: #fff;              /* Hintergrundfarbe Eingabefeld */
+    --chat--input--text-color: initial;           /* Textfarbe im Eingabefeld */
+    --chat--input--line-height: 1.5;              /* Zeilenhöhe im Eingabefeld */
+    --chat--input--placeholder--font-size: ...;   /* Schriftgröße des Platzhaltertexts */
+    --chat--input--border-active: 0;              /* Rahmen wenn Eingabefeld aktiv/fokussiert */
+    --chat--input--left--panel--width: 2rem;      /* Breite des linken Bereichs im Input */
 
-	/* Button Styles */
-	--chat--button--padding: calc(var(--chat--spacing) * 5 / 8) var(--chat--spacing);
-	--chat--button--border-radius: var(--chat--border-radius);
-	--chat--button--font-size: 1rem;
-	--chat--button--line-height: 1;
-	--chat--button--color--primary: var(--chat--color-light);
-	--chat--button--background--primary: var(--chat--color--secondary);
-	--chat--button--border--primary: none;
-	--chat--button--color--primary--hover: var(--chat--color-light);
-	--chat--button--background--primary--hover: var(--chat--color-secondary-shade-50);
-	--chat--button--border--primary--hover: none;
-	--chat--button--color--primary--disabled: var(--chat--color-light);
-	--chat--button--background--primary--disabled: #81bbb1;
-	--chat--button--border--primary--disabled: none;
-	--chat--button--color--secondary: var(--chat--color-light);
-	--chat--button--background--secondary: hsl(0, 0%, 58%);
-	--chat--button--border--secondary: none;
-	--chat--button--color--secondary--hover: var(--chat--color-light);
-	--chat--button--background--secondary--hover: hsl(0, 0%, 51%);
-	--chat--button--border--secondary--hover: none;
-	--chat--button--color--secondary--disabled: var(--chat--color-light);
-	--chat--button--background--secondary--disabled: hsl(0, 0%, 78%);
-	--chat--button--border--secondary--disabled: none;
-	--chat--close--button--color-hover: var(--chat--color--primary);
+    /* === BUTTONS (z.B. "New Conversation") === */
+    --chat--button--padding: ...;                 /* Innenabstand der Buttons */
+    --chat--button--border-radius: ...;           /* Abrundung der Buttons */
+    --chat--button--font-size: 1rem;              /* Schriftgröße der Buttons */
+    --chat--button--line-height: 1;               /* Zeilenhöhe der Buttons */
+    --chat--button--color--primary: ...;          /* Textfarbe primärer Button */
+    --chat--button--background--primary: ...;     /* Hintergrund primärer Button */
+    --chat--button--color--primary--hover: ...;   /* Textfarbe primärer Button (Hover) */
+    --chat--button--background--primary--hover: ...; /* Hintergrund primärer Button (Hover) */
+    --chat--button--color--primary--disabled: ...; /* Textfarbe wenn deaktiviert */
+    --chat--button--background--primary--disabled: #81bbb1; /* Hintergrund wenn deaktiviert */
+    --chat--button--color--secondary: ...;        /* Textfarbe sekundärer Button */
+    --chat--button--background--secondary: ...;   /* Hintergrund sekundärer Button */
+    --chat--close--button--color-hover: ...;      /* Farbe des X-Schließen-Buttons (Hover) */
 
-	/* Send and File Buttons */
-	--chat--input--send--button--background: var(--chat--color-white);
-	--chat--input--send--button--color: var(--chat--color--secondary);
-	--chat--input--send--button--background-hover: var(--chat--color--primary-shade-50);
-	--chat--input--send--button--color-hover: var(--chat--color-secondary-shade-50);
-	--chat--input--file--button--background: var(--chat--color-white);
-	--chat--input--file--button--color: var(--chat--color--secondary);
-	--chat--input--file--button--background-hover: var(--chat--input--file--button--background);
-	--chat--input--file--button--color-hover: var(--chat--color-secondary-shade-50);
-	--chat--files-spacing: 0.25rem;
+    /* === SENDE- & DATEI-BUTTONS === */
+    --chat--input--send--button--background: #fff;       /* Hintergrund Sende-Button */
+    --chat--input--send--button--color: #20b69e;         /* Icon-Farbe Sende-Button */
+    --chat--input--send--button--background-hover: ...;  /* Hintergrund Sende-Button (Hover) */
+    --chat--input--send--button--color-hover: ...;       /* Icon-Farbe Sende-Button (Hover) */
+    --chat--input--file--button--background: #fff;       /* Hintergrund Datei-Button */
+    --chat--input--file--button--color: #20b69e;         /* Icon-Farbe Datei-Button */
+    --chat--input--file--button--background-hover: ...;  /* Hintergrund Datei-Button (Hover) */
+    --chat--input--file--button--color-hover: ...;       /* Icon-Farbe Datei-Button (Hover) */
+    --chat--files-spacing: 0.25rem;                      /* Abstand zwischen angehängten Dateien */
 
-	/* Body and Footer */
-	--chat--body--background: var(--chat--color-light);
-	--chat--footer--background: var(--chat--color-light);
-	--chat--footer--color: var(--chat--color-dark);
+    /* === BODY & FOOTER === */
+    --chat--body--background: #f2f4f8;            /* Hintergrundfarbe des Chat-Bereichs */
+    --chat--footer--background: #f2f4f8;          /* Hintergrundfarbe des Footer-Bereichs */
+    --chat--footer--color: #101330;               /* Textfarbe im Footer */
 }
-
 
 		
         body {
