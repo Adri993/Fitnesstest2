@@ -302,9 +302,6 @@
 </section>
 
 
-
-
-
 	
 
 <script type="module">
@@ -313,6 +310,36 @@
 	createChat({
 		webhookUrl: 'https://n8n-n8n.0x6dw4.easypanel.host/webhook/c07067e7-6363-4841-b346-f3f5ea2dbe10/chat'
 	});
+	createChat({
+	webhookUrl: '',
+	webhookConfig: {
+		method: 'POST',
+		headers: {}
+	},
+	target: '#n8n-chat',
+	mode: 'window',
+	chatInputKey: 'chatInput',
+	chatSessionKey: 'sessionId',
+	loadPreviousSession: true,
+	metadata: {},
+	showWelcomeScreen: false,
+	defaultLanguage: 'en',
+	initialMessages: [
+                'Hey! 👋 Willkommen beim Strength Gym!',
+                'Ich helfe dir bei Fragen, Probetraining oder einem Beratungsgespräch. 💪',
+                '💡 Datenschutzhinweis: Deine Nachrichten werden verarbeitet.\n\n🔗 Mehr Infos: /Fitnesstest/datenschutz.html',
+	],
+	i18n: {
+		en: {
+			title: 'Willkommen bei PowerFit Fitnessstudio 👋',
+			subtitle: "24/7 erreichbar.",
+			footer: '',
+			getStarted: 'New Conversation',
+			inputPlaceholder: 'Schreib deine Frage',
+		},
+	},
+	enableStreaming: false,
+});
 </script>
 
     
