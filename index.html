@@ -233,7 +233,23 @@
     </style>
 </head>
 <body>
-
+<!-- 🔴 NEU: Cookie-Banner 								n8n-->
+<div id="cookie-banner" style="
+position: fixed;
+bottom: 0;
+left: 0;
+width: 100%;
+background: #222;
+color: white;
+padding: 15px;
+text-align: center;
+z-index: 10000;
+">
+    Wir nutzen Cookies für den Chatbot.
+    <button onclick="acceptCookies()">Akzeptieren</button>
+    <button onclick="declineCookies()">Ablehnen</button>
+</div>
+	
 <header>
     <h1>PowerFit Fitnessstudio</h1>
     <p>Dein Weg zu einem stärkeren Ich 💪</p>
@@ -308,41 +324,43 @@
 <script type="module">
 	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
-	createChat({
-		webhookUrl: 'https://n8n-n8n.0x6dw4.easypanel.host/webhook/c07067e7-6363-4841-b346-f3f5ea2dbe10/chat',
-	webhookConfig: {
-		method: 'POST',
-		headers: {}
-	},
-	target: '#n8n-chat',
-	mode: 'window',
-	chatInputKey: 'chatInput',
-	chatSessionKey: 'sessionId',
-	loadPreviousSession: false,
-	metadata: {},
-	showWelcomeScreen: false,
-	defaultLanguage: 'en',
-	initialMessages: [
-                'Hey! 👋 Willkommen beim Strength Gym!',
-                'Ich helfe dir bei Fragen, Probetraining oder einem Beratungsgespräch. 💪',
-                '💡 Datenschutzhinweis: Deine Nachrichten werden verarbeitet.\n\n🔗 Mehr Infos: /Fitnesstest/datenschutz.html',
-	],
-	i18n: {
-		en: {
-			title: 'Willkommen bei PowerFit Fitnessstudio 👋',
-			subtitle: "24/7 erreichbar.",
-			footer: '',
-			getStarted: 'New Conversation',
-			inputPlaceholder: 'Schreib deine Frage',
-		},
-	},
-	enableStreaming: false,
-
-	});
+	// 🔴 NEU: Funktion zum Starten des Chats
+function startChat() {
+    createChat({
+        webhookUrl: 'https://n8n-n8n.0x6dw4.easypanel.host/webhook/c07067e7-6363-4841-b346-f3f5ea2dbe10/chat',
+        webhookConfig: {
+            method: 'POST',
+            headers: {}
+        },
+        target: '#n8n-chat',
+        mode: 'window',
+        chatInputKey: 'chatInput',
+        chatSessionKey: 'sessionId',
+        loadPreviousSession: false,
+        metadata: {},
+        showWelcomeScreen: false,
+        defaultLanguage: 'en',
+        initialMessages: [
+            'Hey! 👋 Willkommen beim Strength Gym!',
+            'Ich helfe dir bei Fragen, Probetraining oder einem Beratungsgespräch. 💪',
+            '💡 Datenschutzhinweis: Deine Nachrichten werden verarbeitet.\n\n🔗 Mehr Infos: /Fitnesstest/datenschutz.html',
+        ],
+        i18n: {
+            en: {
+                title: 'Willkommen bei PowerFit Fitnessstudio 👋',
+                subtitle: "24/7 erreichbar.",
+                footer: '',
+                getStarted: 'New Conversation',
+                inputPlaceholder: 'Schreib deine Frage',
+            },
+        },
+        enableStreaming: false,
+    });
+}
 
 </script>
 
-<div id="n8n-chat"></div>    
+<div id="n8n-chat" style="display:none;"></div>
 <footer>
 	
     <p>© 2026 PowerFit Fitnessstudio – Alle Rechte vorbehalten</p>
@@ -361,6 +379,38 @@
         answer.style.display = answer.style.display === "block" ? "none" : "block";
     }
 </script>
+<script>
+    // 🔴 NEU: Wenn Nutzer akzeptiert
+    function acceptCookies() {
+        localStorage.setItem("cookiesAccepted", "true");
 
+        // Banner ausblenden
+        document.getElementById("cookie-banner").style.display = "none";
+
+        // Chat anzeigen
+        document.getElementById("n8n-chat").style.display = "block";
+
+        // Chat starten
+        startChat();
+    }
+
+    // 🔴 NEU: Wenn Nutzer ablehnt
+    function declineCookies() {
+        localStorage.setItem("cookiesAccepted", "false");
+
+        document.getElementById("cookie-banner").style.display = "none";
+    }
+
+    // 🔴 NEU: Beim Laden prüfen
+    window.onload = function () {
+        const accepted = localStorage.getItem("cookiesAccepted");
+
+        if (accepted === "true") {
+            document.getElementById("cookie-banner").style.display = "none";
+            document.getElementById("n8n-chat").style.display = "block";
+            startChat();
+        }
+    };
+</script>
 </body>
 </html>
